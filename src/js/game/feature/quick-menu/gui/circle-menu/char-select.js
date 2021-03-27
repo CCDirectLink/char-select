@@ -1,0 +1,77 @@
+ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
+  .requires("game.feature.quick-menu.gui.circle-menu").defines(function() {
+    sc.QuickMenuButtonGroup.inject({
+        setButtons(...args) {
+            args.forEach((btn, i) => btn && this.addFocusGui(btn, 0, i + 1));
+        }
+    });
+
+    sc.QuickRingMenu.inject({
+        charSelect: null,
+        init() {
+            this.parent();
+    
+            this.buttongroup.addPressCallback(data => {
+                if (data.state && data.state === sc.QUICK_MENU_STATE.CHAR_SELECT) {
+                    sc.quickmodel.enterCharSelect();
+                    this._unfocusAll(data);
+                }
+            });
+        },
+    
+        createButtons() {
+            let angles = [];
+            for(let currentAngle = 0; currentAngle < 360; currentAngle += 360 / 5) {
+                angles.push({
+                    x: 56 - 35 * Math.sin(currentAngle * Math.PI / 180),
+                    y: 56 - 35 * Math.cos(currentAngle * Math.PI / 180)
+                });
+            }
+    
+            this.items = this._createRingButton("items", sc.QUICK_MENU_STATE.ITEMS, angles, 0, 1);
+            this.check = this._createRingButton("analyze", sc.QUICK_MENU_STATE.CHECK, angles, 0, 2);
+            this.party = this._createRingButton("party", sc.QUICK_MENU_STATE.PARTY, angles, 0, 3);
+            this.map = this._createRingButton("map", sc.QUICK_MENU_STATE.MAP, angles, 0, 4);
+            this.charSelect = this._createRingButton("char-select", sc.QUICK_MENU_STATE.CHAR_SELECT, angles, 0, 5);
+            
+            this.items.addChildGui(new sc.ItemTimerOverlay(this.items));
+            this.buttongroup.setButtons(this.check, this.items, this.map, this.party, this.charSelect);
+        }
+    });
+
+    const customRingMenuButtonGfx = new ig.Image("media/gui/CCCharSelect.png");
+
+    sc.RingMenuButton.inject({
+        updateDrawables(src) {
+            if (!this.head && this.state < 5) {
+                this.parent(src);
+            } else {
+                src.addGfx(this.gfx, 0, 0, 400, 304, 32, 32);
+                if (this.active) {
+                    if (this.focus) {
+                        src.addGfx(this.gfx, 0, 0, 400, 336, 32, 32).setAlpha(this.alpha)
+                    } else {
+                        if (this.pressed) {
+                            src.addGfx(this.gfx, 0, 0, 400, 336, 32, 32)
+                        }
+                    }
+                } else {
+                    if (this.focus) {
+                        src.addGfx(this.gfx, 0, 0, 400, 272, 32, 32);
+                    }
+                }
+                src.addGfx(customRingMenuButtonGfx, 8, 8, 0, 0 + (this.active ? 0 : 16), 16, 16);
+            }
+        }
+    });
+
+    sc.QuickMenu.inject({
+        init() {
+            this.parent();
+    
+            this.charSelect = new sc.CharSelectMenu(this.ringmenu, this.ringmenu.items);
+            this.addChildGui(this.charSelect);
+        }
+    });
+
+});

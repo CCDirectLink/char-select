@@ -2,5 +2,5 @@
     "id": "cc-char-select",
     "title": "CCCharSelect",
     "version": "0.0.1",
-    "plugin": "plugin.js"
+    "prestart": "prestart.js"
 }
