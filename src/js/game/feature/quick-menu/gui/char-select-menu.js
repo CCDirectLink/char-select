@@ -121,12 +121,12 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
             this.buttonGroup.clear();
             this.list.clear(true);
     
-            ["Lea", "Mirabelle", "Emilie"].forEach((name, i) => {
+            sc.PARTY_OPTIONS.forEach((name, i) => {
                 let btn = new sc.ButtonGui(name, 143);
-                btn.headChild = new ig.Image("media/gui/CCCharSelect.png");
+                btn.headChild = new ig.Image("media/gui/severed-heads.png");
                 btn.setData({
                     name: name,
-                    index: i
+                    index: sc.party.models[name].config.headIdx
                 });
                 
                 btn.hook.screenCoords = {};
@@ -136,7 +136,7 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
                 this.list.addButton(btn);
     
                 btn.updateDrawables = function(src) {
-                    src.addGfx(this.headChild, this.hook.size.x, 0, 16 + (24 * this.data.index), 0);
+                    src.addGfx(this.headChild, this.hook.size.x, 0, (24 * this.data.index), 0);
                 };
             });
     
@@ -162,7 +162,10 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
         },
     
         onPress(btn) {
-            console.log(btn.data.name);
+            let name = btn.data.name;
+            const config = sc.party.models[name].config;
+            sc.model.player.setConfig(config);
+            // console.log(btn.data.name);
         },
     
         modelChanged(sender, event) {
