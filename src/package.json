@@ -1,6 +1,0 @@
-{
-    "name": "cc-char-select",
-    "ccmodHumanName": "CCCharSelect",
-    "version": "0.0.1",
-    "plugin": "plugin.js"
-}
