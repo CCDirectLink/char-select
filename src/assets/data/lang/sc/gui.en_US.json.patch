@@ -1,0 +1,11 @@
+{
+	"labels": {
+		"quick-menu": {
+			"description": {
+				"char-select": "Select character."
+			},
+			
+			"char-select": "Select character."
+		}
+	}
+}
