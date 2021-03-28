@@ -1,6 +1,6 @@
 {
     "id": "cc-char-select",
     "title": "CCCharSelect",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "prestart": "prestart.js"
 }
