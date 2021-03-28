@@ -1,5 +1,5 @@
 const charOffsets = new Map;
-window.CHAR_SELECT = charOffsets;
+window.CHAR_SELECT_HEAD_OFFSETS = charOffsets;
 charOffsets.set("Lea", {
     x: 4,
     y: 0

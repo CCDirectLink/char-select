@@ -63,8 +63,8 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
                 }
                 const playerName = sc.model.player.config.name;
                 const headIdx = sc.model.player.config.headIdx;
-                if (window.CHAR_SELECT.has(playerName)) {
-                    const {x,y} = window.CHAR_SELECT.get(playerName);
+                if (window.CHAR_SELECT_HEAD_OFFSETS.has(playerName)) {
+                    const {x,y} = window.CHAR_SELECT_HEAD_OFFSETS.get(playerName);
                     src.addGfx(headGfxs, x, y, (headIdx * 24), 0, 24, 24);
                 } else {
                     src.addGfx(headGfxs, 4, 1, (headIdx * 24), 0, 24, 24);
