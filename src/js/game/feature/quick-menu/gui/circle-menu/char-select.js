@@ -41,11 +41,71 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
 
     const customRingMenuButtonGfx = new ig.Image("media/gui/CCCharSelect.png");
     const headGfxs = new ig.Image("media/gui/severed-heads.png");
-    // for development purposes only change
-    window.headPos = {
+    const charOffsets = new Map;
+    charOffsets.set("Lea", {
+        x: 4,
+        y: 0
+    });
+    charOffsets.set("Shizuka", {
+        x: 3,
+        y: 0
+    });
+    charOffsets.set("Shizuka0", {
+        x: 3,
+        y: 0
+    });
+    charOffsets.set("Emilie", {
+        x: 3,
+        y: 1
+    });
+    charOffsets.set("Sergey", {
         x: 4,
         y: 1
-    };
+    });
+    charOffsets.set("Schneider", {
+        x: 3,
+        y: 0
+    });
+    charOffsets.set("Schneider2", {
+        x: 3,
+        y: 0
+    });
+
+    charOffsets.set("Hlin", {
+        x: 3,
+        y: 1
+    });
+
+    charOffsets.set("Grumpy", {
+        x: 2,
+        y: 0
+    });
+
+    charOffsets.set("Glasses", {
+        x: 4,
+        y: 1
+    });
+
+    charOffsets.set("Apollo", {
+        x: 4,
+        y: 1
+    });
+
+    charOffsets.set("Joern", {
+        x: 4,
+        y: 0
+    });
+
+    charOffsets.set("Triblader1", {
+        x: 3,
+        y: 0
+    });
+
+    charOffsets.set("Luke", {
+        x: 3,
+        y: 0
+    });
+
     sc.RingMenuButton.inject({
         updateDrawables(src) {
             if (!this.head && this.state < 5) {
@@ -65,8 +125,15 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
                         src.addGfx(this.gfx, 0, 0, 400, 272, 32, 32);
                     }
                 }
+                const playerName = sc.model.player.config.name;
                 const headIdx = sc.model.player.config.headIdx;
-                src.addGfx(headGfxs, window.headPos.x, window.headPos.y, (headIdx * 24), 0, 24, 24);
+                if (charOffsets.has(playerName)) {
+                    const {x,y} = charOffsets.get(playerName);
+                    src.addGfx(headGfxs, x, y, (headIdx * 24), 0, 24, 24);
+                } else {
+                    src.addGfx(headGfxs, 4, 1, (headIdx * 24), 0, 24, 24);
+                }
+                
             }
         }
     });
