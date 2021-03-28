@@ -40,7 +40,12 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
     });
 
     const customRingMenuButtonGfx = new ig.Image("media/gui/CCCharSelect.png");
-
+    const headGfxs = new ig.Image("media/gui/severed-heads.png");
+    // for development purposes only change
+    window.headPos = {
+        x: 4,
+        y: 1
+    };
     sc.RingMenuButton.inject({
         updateDrawables(src) {
             if (!this.head && this.state < 5) {
@@ -60,7 +65,8 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
                         src.addGfx(this.gfx, 0, 0, 400, 272, 32, 32);
                     }
                 }
-                src.addGfx(customRingMenuButtonGfx, 8, 8, 0, 0 + (this.active ? 0 : 16), 16, 16);
+                const headIdx = sc.model.player.config.headIdx;
+                src.addGfx(headGfxs, window.headPos.x, window.headPos.y, (headIdx * 24), 0, 24, 24);
             }
         }
     });
