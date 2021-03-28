@@ -97,8 +97,8 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
     });
 
     charOffsets.set("Triblader1", {
-        x: 3,
-        y: 0
+        x: 4,
+        y: 1
     });
 
     charOffsets.set("Luke", {
