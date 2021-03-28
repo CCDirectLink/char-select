@@ -29,6 +29,4 @@ ig.module("game.feature.player.player-skin.char-select")
             });
         }
     });
-
-
-  });
+});
