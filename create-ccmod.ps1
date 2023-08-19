@@ -1,17 +1,17 @@
 $modname = "char-select"
-$compress = @{
-    Path = "./src/*"
-    Force = $true
-    DestinationPath =  $modname + ".zip"
-}
-
-Compress-Archive @compress
-
 
 $CcmodFileName = $modname + ".ccmod"
 if (Test-Path $CcmodFileName) 
 {
   Remove-Item $CcmodFileName
 }
+
+$compress = @{
+    Path = "./*"
+    Force = $true
+    DestinationPath =  $modname + ".zip"
+}
+
+Compress-Archive @compress
 
 Rename-Item -Path ($modname + ".zip") -NewName $CcmodFileName
