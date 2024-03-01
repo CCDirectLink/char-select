@@ -165,7 +165,10 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
             let name = btn.data.name;
             const config = sc.party.models[name].config;
             sc.model.player.setConfig(config);
-            // console.log(btn.data.name);
+
+            /* update the player sprite immediately */
+            sc.model.player.setConfig(config)
+            ig.ENTITY.Combatant.prototype.update.call(ig.game.playerEntity)
         },
     
         modelChanged(sender, event) {
