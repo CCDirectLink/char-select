@@ -141,7 +141,7 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
             });
     
             this.list._prevIndex = c;
-            ig.input.mouseGuiActive ? this.buttonGroup.setCurrentFocus(0, c) : this.buttonGroup.focusCurrentButton(0, c, false, a);
+            ig.input.mouseGuiActive ? this.buttonGroup.setCurrentFocus(0, c) : this.buttonGroup.focusCurrentButton(0, c, false);
             this.list.scrollToY(b, true)
         },
     
