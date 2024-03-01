@@ -41,7 +41,7 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
                 this.list.showBottomBar = false;
                 this.addChildGui(this.list);
 
-                let text = new sc.TextGui(ig.lang.get("sc.gui.quick-menu.char-select"), {
+                let text = new sc.TextGui("Select a character", {
                     speed: ig.TextBlock.SPEED.IMMEDIATE,
                     font: sc.fontsystem.tinyFont,
                 });
