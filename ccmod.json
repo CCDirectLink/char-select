@@ -2,6 +2,14 @@
     "id": "char-select",
     "title": "CCCharSelect",
     "version": "1.0.0",
+    "description": "Adds a widget for character selection menu.",
+    "repository": "https://github.com/CCDirectLink/char-select",
+    "tags": ["widget", "character"],
+    "authors": ["ac2pic", "2767mr", "lexisother", "krypek"],
+    "dependencies": {
+        "nax-ccuilib": ">=1.2.3"
+    },
     "preload": "preload.js",
     "prestart": "prestart.js"
 }
+
