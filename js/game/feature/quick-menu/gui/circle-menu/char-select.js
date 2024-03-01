@@ -9,7 +9,7 @@ ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
             imageNoCache: true,
             image: () => {
                 const playerName = sc.model.player.config.name;
-                const headIdx = sc.model.player.config.headIdx;
+                const headIdx = sc.party.models[playerName].getHeadIdx();
 
                 let pos = { x: 4, y: 1 };
                 if (window.CHAR_SELECT_HEAD_OFFSETS.has(playerName)) {

@@ -106,7 +106,7 @@ ig.module("game.feature.quick-menu.gui.char-select-menu")
                     btn.headChild = new ig.Image("media/gui/severed-heads.png");
                     btn.setData({
                         name: name,
-                        index: sc.party.models[name].config.headIdx,
+                        index: sc.party.models[name].getHeadIdx(),
                     });
 
                     btn.hook.screenCoords = {};
