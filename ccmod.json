@@ -1,7 +1,7 @@
 {
     "id": "char-select",
     "title": "CCCharSelect",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Adds a widget for character selection menu.",
     "repository": "https://github.com/CCDirectLink/char-select",
     "tags": ["widget", "character"],
