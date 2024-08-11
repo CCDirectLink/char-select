@@ -1,12 +1,17 @@
 ig.module("game.feature.quick-menu.gui.circle-menu.char-select")
     .requires("game.feature.quick-menu.gui.circle-menu")
     .defines(() => {
+        sc.QUICK_MENU_STATE["CHAR_SELECT"] = Math.max(...Object.values(sc.QUICK_MENU_STATE)) + 1;
+
         const headGfxs = new ig.Image("media/gui/severed-heads.png");
+
         nax.ccuilib.QuickRingMenuWidgets.addWidget({
             title: "Character selection menu",
             name: "char_select",
             description: "Open the character selection menu",
             imageNoCache: true,
+            id: sc.QUICK_MENU_STATE.CHAR_SELECT,
+            keepPressed: true,
             image: () => {
                 const playerName = sc.model.player.config.name;
                 const headIdx = sc.party.models[playerName].getHeadIdx();

@@ -7,7 +7,7 @@
     "tags": ["widget", "character"],
     "authors": ["ac2pic", "2767mr", "lexisother", "krypek"],
     "dependencies": {
-        "nax-ccuilib": ">=1.2.3"
+        "nax-ccuilib": ">=1.2.8"
     },
     "preload": "preload.js",
     "prestart": "prestart.js"
