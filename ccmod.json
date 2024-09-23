@@ -4,7 +4,7 @@
     "version": "1.0.1",
     "description": "Adds a widget for character selection menu.",
     "repository": "https://github.com/CCDirectLink/char-select",
-    "tags": ["widget", "character"],
+    "tags": ["widget"],
     "authors": ["ac2pic", "2767mr", "lexisother", "krypek"],
     "dependencies": {
         "nax-ccuilib": ">=1.2.8"
